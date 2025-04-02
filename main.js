@@ -51,7 +51,7 @@
   });
 
 // Booking Modal functionality
-const RECIPIENT_EMAIL = 'tejasamirth@gmail.com'; // Company's email address
+const RECIPIENT_EMAIL = 'mufazzalmohammed26@gmail.com'; // Company's email address
 
 const bookingLink = document.getElementById('booking-link');
 const bookingModal = document.getElementById('booking-modal');
@@ -78,9 +78,9 @@ bookingModal.addEventListener('click', (e) => {
 });
 
 // Handle booking form submission
-bookingForm.addEventListener('submit', (e) => {
+bookingForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-  
+
   // Collect form data
   const clientName = document.getElementById('client-name').value;
   const clientEmail = document.getElementById('client-email').value;
@@ -88,7 +88,7 @@ bookingForm.addEventListener('submit', (e) => {
   const consultationDate = document.getElementById('consultation-date').value;
   const consultationTime = document.getElementById('consultation-time').value;
 
-  // Prepare email details for potential future integration
+  // Prepare email details
   const emailDetails = {
     to: RECIPIENT_EMAIL,
     from: clientEmail,
@@ -104,15 +104,32 @@ bookingForm.addEventListener('submit', (e) => {
     `
   };
 
-  // In a real-world scenario, you would send this data to a backend service
-  console.log('Booking Details:', emailDetails);
+  try {
+    // Send data to backend
+    const response = await fetch('/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(emailDetails)
+    });
 
-  // Simulate booking confirmation
-  bookingConfirmation.innerHTML = `
-    Thank you, ${clientName}! 
-    Your consultation is booked for ${consultationDate} at ${consultationTime}.
-    A confirmation email will be sent to ${RECIPIENT_EMAIL}.
-  `;
+    const result = await response.json();
+
+    if (response.ok) {
+      // Simulate booking confirmation
+      bookingConfirmation.innerHTML = `
+        Thank you, ${clientName}! 
+        Your consultation is booked for ${consultationDate} at ${consultationTime}.
+        A confirmation email has been sent to ${RECIPIENT_EMAIL}.
+      `;
+    } else {
+      throw new Error(result.error || 'Failed to send email');
+    }
+  } catch (error) {
+    console.error('Error:', error.message);
+    bookingConfirmation.innerHTML = `
+      Oops! Something went wrong. Please try again later.
+    `;
+  }
 
   // Reset form
   bookingForm.reset();
@@ -123,7 +140,6 @@ bookingForm.addEventListener('submit', (e) => {
     bookingConfirmation.innerHTML = '';
   }, 3000);
 });
-
 // Constrain date selection
 const today = new Date().toISOString().split('T')[0];
 document.getElementById('consultation-date').setAttribute('min', today);

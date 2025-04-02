@@ -1,85 +1,85 @@
-// Install the package:
-// npm install @sendgrid/mail
-
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const sgMail = require('@sendgrid/mail');
-require('dotenv').config();
+require("dotenv").config(); // Load environment variables
+const express = require("express");
+const axios = require("axios");
+const cors = require("cors");
+const rateLimit = require("express-rate-limit");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
+// Middleware to parse JSON
+app.use(express.json());
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
-// SendGrid setup
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
-// Booking endpoint
-app.post('/api/book-consultation', async (req, res) => {
-  try {
-    const { clientName, clientEmail, serviceType, consultationDate, consultationTime } = req.body;
-    
-    // Validate required fields
-    if (!clientName || !clientEmail || !serviceType || !consultationDate || !consultationTime) {
-      return res.status(400).json({ success: false, message: 'All fields are required' });
-    }
-    
-    // Email to business owner
-    const businessEmail = {
-      to: 'tejasamirth@gmail.com',
-      from: process.env.FROM_EMAIL, // Your verified sender email in SendGrid
-      subject: `New Consultation Booking - ${serviceType}`,
-      html: `
-        <h2>New Consultation Booking</h2>
-        <p><strong>Name:</strong> ${clientName}</p>
-        <p><strong>Email:</strong> ${clientEmail}</p>
-        <p><strong>Service:</strong> ${serviceType}</p>
-        <p><strong>Date:</strong> ${consultationDate}</p>
-        <p><strong>Time:</strong> ${consultationTime}</p>
-      `
-    };
-    
-    // Email to client
-    const clientConfirmationEmail = {
-      to: clientEmail,
-      from: process.env.FROM_EMAIL, // Your verified sender email in SendGrid
-      subject: 'Your Consultation Booking Confirmation',
-      html: `
-        <h2>Booking Confirmation</h2>
-        <p>Dear ${clientName},</p>
-        <p>Thank you for booking a consultation with us. Here are your booking details:</p>
-        <p><strong>Service:</strong> ${serviceType}</p>
-        <p><strong>Date:</strong> ${consultationDate}</p>
-        <p><strong>Time:</strong> ${consultationTime}</p>
-        <p>We look forward to meeting with you!</p>
-        <p>Best regards,<br>Your Company Name</p>
-      `
-    };
-    
-    // Send both emails
-    await sgMail.send(businessEmail);
-    await sgMail.send(clientConfirmationEmail);
-    
-    // Respond to client
-    res.status(200).json({ 
-      success: true, 
-      message: 'Booking submitted successfully' 
-    });
-    
-  } catch (error) {
-    console.error('Booking error:', error);
-    res.status(500).json({ 
-      success: false, 
-      message: 'Failed to process booking' 
-    });
-  }
+// Rate limiting middleware
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 10000, // 15 minutes
+    max: 10, // Limit each IP to 10 requests per windowMs
+    message: "Too many requests, please try again later."
 });
 
-// Start server
+// Validate API key
+const MAILERSEND_API_KEY = process.env.MAILERSEND_API_KEY;
+const MAILERSEND_API_URL = "https://api.mailersend.com/v1/email";
+
+if (!MAILERSEND_API_KEY) {
+    console.error("MailerSend API key is missing. Please check your .env file.");
+    process.exit(1);
+}
+
+// Endpoint to send email
+app.post("/send-email", limiter, async (req, res) => {
+    try {
+        const { to, from, subject, body } = req.body;
+
+        // Validate input
+        if (!to || !from || !subject || !body) {
+            return res.status(400).json({ error: "Missing required fields: to, from, subject, body" });
+        }
+
+        // Sanitize input (optional)
+        const validator = require("validator");
+        if (!validator.isEmail(from)) {
+            return res.status(400).json({ error: "Invalid sender email address" });
+        }
+        if (!validator.isEmail(to)) {
+            return res.status(400).json({ error: "Invalid recipient email address" });
+        }
+
+        // Prepare email data
+        const emailData = {
+            from: { email: from, name: "Client Booking" },
+            to: [{ email: to }],
+            subject: subject,
+            text: body,
+            html: `<p>${body.replace(/\n/g, "<br>")}</p>` // Optional: HTML email support
+        };
+
+        // Send email via MailerSend API
+        const response = await axios.post(MAILERSEND_API_URL, emailData, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${MAILERSEND_API_KEY}`
+            }
+        });
+
+        // Log API response
+        console.log("MailerSend API Response:", response.data);
+
+        // Respond to frontend
+        res.status(200).json({ message: "Email sent successfully!", data: response.data });
+    } catch (error) {
+        console.error("Error sending email:", error.response?.data || error.message);
+
+        // Respond with detailed error
+        res.status(500).json({
+            error: "Failed to send email",
+            details: error.response?.data?.message || error.message
+        });
+    }
+});
+
+// Start the server
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Clarity</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    </head>
+    <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+        <a href="#home" class="logo">
+            <span></span>
+            Prime<span>Clarity</span>
+        </a>
+        <div class="mobile-menu-toggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><button id="booking-link" class="stand-out">Book Consultation</button></li>
+        </ul>
+        </div>
+    </nav>
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="booking-modal">
+        <div class="booking-modal-content">
+        <span class="booking-modal-close">&times;</span>
+        <h2>Book a Consultation</h2>
+        <form id="booking-form">
+            <input type="text" id="client-name" placeholder="Your Name" required>
+            <input type="email" id="client-email" placeholder="Your Email" required>
+            <select id="service-type" required>
+            <option value="">Select Service Type</option>
+            <option value="financial-reporting">Financial Reporting</option>
+            <option value="compliance-management">Compliance Management</option>
+            <option value="budget-planning">Budget Planning</option>
+            <option value="tax-preparation">Tax Preparation</option>
+            <option value="other">Other</option>
+            </select>
+            <input type="date" id="consultation-date" required>
+            <select id="consultation-time" required>
+            <option value="">Select Time Slot</option>
+            <option value="09:00">9:00 AM</option>
+            <option value="10:30">10:30 AM</option>
+            <option value="14:00">2:00 PM</option>
+            <option value="15:30">3:30 PM</option>
+            </select>
+            <button type="submit" class="submit-button">Book Consultation</button>
+        </form>
+        <div id="booking-confirmation"></div>
+        </div>
+    </div>
+    </body>
+</html>
