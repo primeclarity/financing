@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prime Clarity</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="#home" class="logo">
+        <span><p>%</p></span>
+        Prime<span>Clarity</span>
+      </a>
+      <div class="mobile-menu-toggle">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#" id="booking-link" class="stand-out">Book Consultation</a></li>
+      </ul>
+    </div>
+  </nav>
+<!-- Booking Modal -->
+<div id="booking-modal" class="booking-modal">
+    <div class="booking-modal-content">
+      <span class="booking-modal-close">&times;</span>
+      <h2>Book a Consultation</h2>
+      <form id="booking-form">
+        <input type="text" id="client-name" placeholder="Your Name" required>
+        <input type="email" id="client-email" placeholder="Your Email" required>
+        <select id="service-type" required>
+          <option value="">Select Service Type</option>
+          <option value="financial-reporting">Financial Reporting</option>
+          <option value="compliance-management">Compliance Management</option>
+          <option value="budget-planning">Budget Planning</option>
+          <option value="tax-preparation">Tax Preparation</option>
+          <option value="other">Other</option>
+        </select>
+        <input type="date" id="consultation-date" required>
+        <select id="consultation-time" required>
+          <option value="">Select Time Slot</option>
+          <option value="09:00">9:00 AM</option>
+          <option value="10:30">10:30 AM</option>
+          <option value="14:00">2:00 PM</option>
+          <option value="15:30">3:30 PM</option>
+        </select>
+        <button type="submit" class="submit-button">Book Consultation</button>
+      </form>
+      <div id="booking-confirmation"></div>
+    </div>
+  </div>
+  <!-- Contact Section -->
+  <section id="home" class="contact-section">
+    <div id="particles-js" class="particles-bg"></div>
+    <div class="contact-content">
+      <h1>Welcome to Prime Clarity</h1>
+      <p>Numbers you can trust, success you can count on.</p>
+      <button class="cta-button" onclick="scrollToContact()">Get in Touch</button>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="about-content">
+      <h2>About Our Firm</h2>
+      <p>Numbers you can trust, success you can count on.</p>
+    </div>
+  </section>
+
+  <!-- Accounting Section -->
+<section id="accounting" class="services-section">
+    <h2>Accounting Services</h2>
+    <ul>
+        <li>
+            <i class="fas fa-chart-line service-icon"></i>
+            <h3 class="service-title">Financial Reporting</h3>
+            <p class="service-description">Comprehensive financial statements and detailed reports to give you clear insights into your business's financial health.</p>
+            <a href="#" class="service-link">Learn More</a>
+        </li>
+        <li>
+            <i class="fas fa-balance-scale service-icon"></i>
+            <h3 class="service-title">Compliance Management</h3>
+            <p class="service-description">Ensure your business meets all regulatory requirements and stays ahead of financial compliance standards.</p>
+            <a href="#" class="service-link">Learn More</a>
+        </li>
+        <li>
+            <i class="fas fa-piggy-bank service-icon"></i>
+            <h3 class="service-title">Budget Planning</h3>
+            <p class="service-description">Strategic budget creation and management to optimize your financial resources and drive growth.</p>
+            <a href="#" class="service-link">Learn More</a>
+        </li>
+    </ul>
+</section>
+
+<!-- Bookkeeping Section -->
+<section id="bookkeeping" class="services-section">
+    <h2>Bookkeeping Services</h2>
+    <ul>
+        <li>
+            <i class="fas fa-file-invoice-dollar service-icon"></i>
+            <h3 class="service-title">Transaction Recording</h3>
+            <p class="service-description">Accurate and timely recording of all financial transactions to maintain pristine financial records.</p>
+            <a href="#" class="service-link">Learn More</a>
+        </li>
+        <li>
+            <i class="fas fa-receipt service-icon"></i>
+            <h3 class="service-title">Invoice Management</h3>
+            <p class="service-description">Streamlined invoice processing and tracking to ensure smooth cash flow and timely payments.</p>
+            <a href="#" class="service-link">Learn More</a>
+        </li>
+        <li>
+            <i class="fas fa-book service-icon"></i>
+            <h3 class="service-title">Ledger Maintenance</h3>
+            <p class="service-description">Comprehensive ledger management to keep your financial documentation organized and accessible.</p>
+            <a href="#" class="service-link">Learn More</a>
+        </li>
+    </ul>
+</section>
+
+<!-- Taxation Section -->
+<section id="taxation" class="services-section">
+    <h2>Taxation Services</h2>
+    <ul>
+        <li>
+            <i class="fas fa-file-alt service-icon"></i>
+            <h3 class="service-title">Tax Preparation</h3>
+            <p class="service-description">Expert tax preparation services to minimize your tax liability and ensure full compliance.</p>
+            <a href="#" class="service-link">Learn More</a>
+        </li>
+        <li>
+            <i class="fas fa-calculator service-icon"></i>
+            <h3 class="service-title">Tax Planning</h3>
+            <p class="service-description">Strategic tax planning to help you make informed financial decisions and optimize your tax strategy.</p>
+            <a href="#" class="service-link">Learn More</a>
+        </li>
+        <li>
+            <i class="fas fa-shield-alt service-icon"></i>
+            <h3 class="service-title">Audit Support</h3>
+            <p class="service-description">Comprehensive audit support and representation to navigate tax audits with confidence.</p>
+            <a href="#" class="service-link">Learn More</a>
+        </li>
+    </ul>
+</section>
+
+<!-- Additional Services Section -->
+<section id="others" class="services-section">
+    <h2>Additional Services</h2>
+    <ul>
+        <li>
+            <i class="fas fa-laptop service-icon"></i>
+            <h3 class="service-title">Software Consulting</h3>
+            <p class="service-description">Guidance on selecting and implementing the best financial and accounting software for your business.</p>
+            <a href="#" class="service-link">Learn More</a>
+        </li>
+        <li>
+            <i class="fas fa-users service-icon"></i>
+            <h3 class="service-title">Training & Support</h3>
+            <p class="service-description">Comprehensive training and ongoing support to help your team manage financial processes effectively.</p>
+            <a href="#" class="service-link">Learn More</a>
+        </li>
+        <li>
+            <i class="fas fa-globe service-icon"></i>
+            <h3 class="service-title">International Compliance</h3>
+            <p class="service-description">Expert guidance on international financial regulations and cross-border financial management.</p>
+            <a href="#" class="service-link">Learn More</a>
+        </li>
+    </ul>
+</section>
+
+  <!-- Contact Form Section -->
+  <section id="contact" class="form-section">
+    <div class="form-container">
+      <h2>Contact Us</h2>
+      <form id="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit" class="submit-button">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Prime Clarity. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
