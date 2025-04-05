@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Clarity</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    </head>
+    <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+        <a href="#home" class="logo">
+            <span></span>
+            Prime<span>Clarity</span>
+        </a>
+        <div class="mobile-menu-toggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="#articles">Article</a></li>
+            <li><button id="booking-link" class="stand-out">Book Consultation</button></li>
+        </ul>
+        </div>
+    </nav>
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="booking-modal">
+        <div class="booking-modal-content">
+        <span class="booking-modal-close">&times;</span>
+        <h2>Book a Consultation</h2>
+        <form id="booking-form">
+            <input type="text" id="client-name" placeholder="Your Name" required>
+            <input type="email" id="client-email" placeholder="Your Email" required>
+            <select id="service-type" required>
+            <option value="">Select Service Type</option>
+            <option value="financial-reporting">Financial Reporting</option>
+            <option value="compliance-management">Compliance Management</option>
+            <option value="budget-planning">Budget Planning</option>
+            <option value="tax-preparation">Tax Preparation</option>
+            <option value="other">Other</option>
+            </select>
+            <input type="date" id="consultation-date" required>
+            <select id="consultation-time" required>
+            <option value="">Select Time Slot</option>
+            <option value="09:00">9:00 AM</option>
+            <option value="10:30">10:30 AM</option>
+            <option value="14:00">2:00 PM</option>
+            <option value="15:30">3:30 PM</option>
+            </select>
+            <button type="submit" class="submit-button">Book Consultation</button>
+        </form>
+        <div id="booking-confirmation"></div>
+        </div>
+    </div>
+
+    <section class="hero-section">
+        <div class="contact-content">
+          <h1 class="hero-title">Professional Bookkeeping</h1>
+        </div>
+    </section>
+      
+    <div class="sections-container">
+        <section id="transaction-recording" class="section-container">
+          <div class="about-content">
+            <h2 class="section-title">Accurate & Timely Transaction Recording for Your Business</h2>
+            <p class="section-description">
+              Proper transaction recording is the foundation of financial management. At Prime Clarity LLC SPC, we ensure all financial transactions are accurately recorded, categorized, and maintained for compliance and analysis.
+            </p>
+            <div class="reporting-list">
+              <p class="list-item"><strong class="bold-text">Daily Bookkeeping</strong> – Including either daily, weekly, or monthly office visits, recording income and expenses in real-time.</p>
+              <p class="list-item"><strong class="bold-text">Bank Reconciliation</strong> – Ensuring bank statements match business records.</p>
+              <p class="list-item"><strong class="bold-text">Expense Tracking</strong> – Monitoring business spending to improve budgeting.</p>
+              <p class="list-item"><strong class="bold-text">Petty Cash Management</strong> – Tracking small business expenditures.</p>
+              <p class="list-item"><strong class="bold-text">Accounts Categorization</strong> – Proper classification of transactions for reporting.</p>
+            </div>
+          </div>
+        </section>
+      
+        <section id="invoice-management" class="section-container">
+          <div class="about-content">
+            <h2 class="section-title">Streamlined Invoice Processing for Smooth Payments</h2>
+            <p class="section-description">
+              Managing invoices efficiently ensures steady cash flow and minimizes delays. Our Invoice Management Services take care of all billing operations for you.
+            </p>
+            <div class="reporting-list">
+              <p class="list-item"><strong class="bold-text">Invoice Creation & Tracking</strong> – Generating invoices and monitoring payments.</p>
+              <p class="list-item"><strong class="bold-text">Accounts Receivable Management</strong> – Ensuring customers pay on time.</p>
+              <p class="list-item"><strong class="bold-text">Automated Reminders</strong> – Reducing late payments with timely notifications.</p>
+              <p class="list-item"><strong class="bold-text">E-Invoicing Compliance</strong> – Adhering to UAE tax laws and digital invoicing regulations.</p>
+              <p class="list-item"><strong class="bold-text">Vendor Invoice Processing</strong> – Managing and verifying supplier invoices.</p>
+            </div>
+          </div>
+        </section>
+      
+        <section id="ledger-maintenance" class="section-container">
+          <div class="about-content">
+            <h2 class="section-title">Organized Financial Documentation for Easy Access</h2>
+            <p class="section-description">
+              A well-maintained ledger ensures transparency and accountability. We provide comprehensive ledger maintenance services to keep your financial data organized, secure, and up to date.
+            </p>
+            <div class="reporting-list">
+              <p class="list-item"><strong class="bold-text">General Ledger Updates</strong> – Regularly updating and balancing accounts.</p>
+              <p class="list-item"><strong class="bold-text">Sub-Ledger Maintenance</strong> – Detailed tracking of receivables and payables.</p>
+              <p class="list-item"><strong class="bold-text">Trial Balance Preparation</strong> – Ensuring financial accuracy before reporting.</p>
+              <p class="list-item"><strong class="bold-text">Year-End Ledger Closing</strong> – Closing books efficiently for financial statements.</p>
+              <p class="list-item"><strong class="bold-text">Error Detection & Correction</strong> – Identifying and fixing inconsistencies in records.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+        <footer>
+            <p>&copy; 2024 Prime Clarity. All rights reserved.</p>
+          </footer>
+    </body>
+</html>

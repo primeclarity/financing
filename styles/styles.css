@@ -325,6 +325,76 @@ footer {
   z-index: 1;
 }
 
+/* Styling for the hero section */
+.hero-section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-light);
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 4rem;
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-lg);
+  font-weight: bold;
+}
+
+/* Styling for the financial reporting section */
+.section-container {
+  
+  padding: var(--spacing-xl) var(--spacing-md);
+  background-color: var(--bg-white);
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-md);
+  position: relative;
+  text-align: center;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+}
+
+.section-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-light);
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+  margin-top: 40px;
+}
+
+.section-description + .list-item {
+  margin-top: var(--spacing-md); /* Adds space between the description and the first list item */
+}
+
+.sections-container {
+  background-color: #f9f9f9;
+  padding: var(--spacing-md);
+}
+
+.bold-text {
+  font-weight: bold;
+  color: var(--text-dark);
+}
+
 /* Enhanced Section and List Item Styles */
 #accounting, 
 #bookkeeping, 
@@ -615,6 +685,22 @@ footer {
   .form-container {
     padding: var(--spacing-md);
     margin: 0 var(--spacing-sm);
+  }
+
+  .hero-title {
+    font-size: 3rem; /* Reduce font size for smaller screens */
+  }
+
+  .section-title {
+    font-size: 2rem; /* Reduce heading size */
+  }
+
+  .section-description {
+    font-size: 1rem; /* Reduce paragraph size */
+  }
+
+  .list-item {
+    font-size: 0.9rem; /* Reduce list item size */
   }
 }
 
