@@ -342,6 +342,52 @@ body {
   animation: slideUp 1s 0.5s forwards ease-out;
 }
 
+.mission-vision-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: var(--spacing-lg);
+}
+
+.mission,
+.vision {
+  width: 48%;
+  text-align: left;
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.mission h3,
+.vision h3 {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-dark);
+}
+
+.mission p,
+.vision p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-light);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mission-vision-container {
+    flex-direction: column;
+  }
+
+  .mission,
+  .vision {
+    width: 100%;
+    margin-bottom: var(--spacing-lg);
+  }
+}
+
 .form-section {
   padding: var(--spacing-xl) var(--spacing-md);
   background-color: #f9f9f9;
