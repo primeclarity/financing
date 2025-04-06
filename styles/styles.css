@@ -172,7 +172,7 @@ body {
   transition: 0.4s;
 }
 
-.contact-section {
+/*.contact-section {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -204,6 +204,90 @@ body {
   opacity: 0;
   transform: translateY(50px);
   animation: slideUp 1s 0.5s forwards ease-out;
+}
+*/
+/* General Styles for the Contact Section */
+#contact {
+  padding: var(--spacing-xl) var(--spacing-md);
+  text-align: center;
+  background-color: var(--bg-white);
+  position: relative;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: var(--bg-white);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 10px 25px var(--shadow-color);
+  transform: scale(0.9);
+  opacity: 0;
+  animation: scaleIn 1s forwards ease-out;
+}
+
+.contact-description {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  margin-bottom: var(--spacing-md);
+}
+
+.contact-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.contact-item {
+  background-color: #f9f9f9;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-lg);
+  transition: all 0.4s ease;
+  text-align: center;
+  border: 2px solid transparent;
+  overflow: hidden; /* Prevent content from spilling out */
+}
+
+.contact-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px var(--shadow-color);
+  border-color: var(--primary-color);
+}
+
+.contact-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-sm);
+  transition: transform 0.3s ease;
+}
+
+.contact-item:hover .contact-icon {
+  transform: scale(1.1);
+}
+
+.contact-link {
+  display: block;
+  font-size: 1rem; /* Slightly reduced font size for better fit */
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-sm);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  white-space: nowrap; /* Prevent wrapping of text */
+  overflow: hidden; /* Hide overflowed text */
+  text-overflow: ellipsis; /* Add "..." for long text */
+  max-width: 100%; /* Ensure text fits within the container */
+}
+
+.contact-link:hover {
+  color: var(--primary-color);
+}
+
+.contact-label {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin-top: 0;
 }
 
 .cta-button {
@@ -309,6 +393,7 @@ form textarea:focus {
 }
 
 footer {
+  background-color: var(--primary-dark);
   text-align: center;
   padding: var(--spacing-md);
   background-color: var(--text-dark);
@@ -702,6 +787,14 @@ footer {
   .list-item {
     font-size: 0.9rem; /* Reduce list item size */
   }
+
+  .contact-methods {
+    grid-template-columns: 1fr;
+  }
+
+  .form-container {
+    padding: var(--spacing-md);
+  }
 }
 
 @keyframes slideUp {
@@ -723,4 +816,6 @@ footer {
     opacity: 1;
     transform: scale(1);
   }
+
+  
 }
